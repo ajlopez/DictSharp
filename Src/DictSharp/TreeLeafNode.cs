@@ -9,7 +9,8 @@
     {
         private T[] values;
         private string[] keys;
-        private int nkeys;
+        private TreeNode<T> parent;
+        protected int nkeys;
 
         public TreeLeafNode(int size)
         {
@@ -46,7 +47,7 @@
             return default(T);
         }
 
-        private ITreeNode<T> InsertItem(string key, T value, int newposition)
+        protected virtual ITreeNode<T> InsertItem(string key, T value, int newposition)
         {
             if (this.nkeys >= this.keys.Length)
             {
@@ -91,12 +92,23 @@
             newleaf.nkeys = rightlen;
             this.nkeys = rightpos - 1;
 
-            var newnode = new TreeNode<T>(this.keys.Length, this, newleaf);
-            newnode.values[0] = this.values[rightpos - 1];
-            newnode.keys[0] = this.keys[rightpos - 1];
-            newnode.nkeys = 1;
+            if (this.parent != null)
+            {
+                int childposition = this.parent.GetChildPosition(this);
+                var newnode = this.parent.InsertItem(this.keys[rightpos - 1], this.values[rightpos - 1], childposition, newleaf);
+                return newnode;
+            }
+            else
+            {
+                var newnode = new TreeNode<T>(this.keys.Length, this, newleaf);
+                newnode.values[0] = this.values[rightpos - 1];
+                newnode.keys[0] = this.keys[rightpos - 1];
+                newnode.nkeys = 1;
+                this.parent = newnode;
+                newleaf.parent = newnode;
 
-            return newnode;
+                return newnode;
+            }
         }
 
         private int GetPosition(string key)

@@ -110,6 +110,18 @@
             for (var k = 1; k <= 20; k++)
                 Assert.AreEqual(k, dictionary.GetItem(string.Format("key{0:00}", k)));
         }
+
+        [TestMethod]
+        public void SetInInverseOrderAndGetTwentyItems()
+        {
+            Dictionary<int> dictionary = new Dictionary<int>();
+
+            for (var k = 20; k >= 1; k--)
+                dictionary.SetItem(string.Format("key{0:00}", k), k);
+
+            for (var k = 1; k <= 20; k++)
+                Assert.AreEqual(k, dictionary.GetItem(string.Format("key{0:00}", k)));
+        }
     }
 }
 
