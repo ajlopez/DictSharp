@@ -7,16 +7,19 @@
 
     public class Dictionary<T>
     {
-        private TreeLeafNode<T> node = new TreeLeafNode<T>(10);
+        private ITreeNode<T> root = new TreeLeafNode<T>(10);
 
         public void SetItem(string key, T value)
         {
-            this.node.SetItem(key, value);
+            var newroot = this.root.SetItem(key, value);
+
+            if (newroot != null)
+                this.root = newroot;
         }
 
         public T GetItem(string key)
         {
-            return this.node.GetItem(key);
+            return this.root.GetItem(key);
         }
     }
 }
