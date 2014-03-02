@@ -38,10 +38,10 @@
                 return null;
             }
             else
-                return InsertItem(key, value, -1 - position);
+                return this.InsertItem(key, value, -1 - position);
         }
 
-        virtual protected T NotFound(string key, int position)
+        protected virtual T NotFound(string key, int position)
         {
             return default(T);
         }
@@ -79,7 +79,7 @@
         private ITreeNode<T> Split()
         {
             var newleaf = new TreeLeafNode<T>(this.keys.Length);
-            int rightpos = this.keys.Length / 2 + 1;
+            int rightpos = (this.keys.Length / 2) + 1;
             int rightlen = this.keys.Length - rightpos;
 
             for (int k = 0; k < rightlen; k++)
