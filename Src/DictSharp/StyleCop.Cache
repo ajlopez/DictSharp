@@ -1,0 +1,33 @@
+<stylecopresultscache>
+  <version>10</version>
+  <project key="2139279335">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>03/02/2014 16:29:23</timestamp>
+      <milliseconds>11</milliseconds>
+    </settings>
+    <timestamp>03/02/2014 15:11:24</timestamp>
+    <milliseconds>319</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Dictionary.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>03/02/2014 16:29:23</timestamp>
+      <milliseconds>11</milliseconds>
+    </settings>
+    <timestamp>03/02/2014 16:25:04</timestamp>
+    <milliseconds>367</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TreeLeafNode.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>03/02/2014 16:29:23</timestamp>
+      <milliseconds>11</milliseconds>
+    </settings>
+    <timestamp>03/02/2014 16:26:42</timestamp>
+    <milliseconds>73</milliseconds>
+    <violations />
+  </sourcecode>
+</stylecopresultscache>
