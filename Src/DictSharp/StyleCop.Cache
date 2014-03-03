@@ -36,16 +36,27 @@
     <milliseconds>534</milliseconds>
     <violations />
   </sourcecode>
+  <project key="2139279335">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
   <sourcecode name="TreeLeafNode.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
     <settings>
       <timestamp>03/02/2014 16:29:23</timestamp>
       <milliseconds>11</milliseconds>
     </settings>
-    <timestamp>03/02/2014 17:32:31</timestamp>
-    <milliseconds>923</milliseconds>
-    <violations />
+    <timestamp>03/03/2014 15:05:42</timestamp>
+    <milliseconds>980</milliseconds>
+    <violations>
+      <violation namespace="Microsoft.StyleCop.CSharp.OrderingRules" rule="ElementsMustBeOrderedByAccess" ruleCheckId="SA1202">
+        <context>All private fields must be placed after all protected fields.</context>
+        <line>13</line>
+        <warning>False</warning>
+      </violation>
+      <violation namespace="Microsoft.StyleCop.CSharp.MaintainabilityRules" rule="FieldsMustBePrivate" ruleCheckId="SA1401">
+        <context>Fields must be declared with private access. Use properties to expose fields.</context>
+        <line>13</line>
+        <warning>False</warning>
+      </violation>
+    </violations>
   </sourcecode>
-  <project key="2139279335">
-    <configuration>DEBUG;TRACE</configuration>
-  </project>
 </stylecopresultscache>

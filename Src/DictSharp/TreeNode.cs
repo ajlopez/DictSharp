@@ -9,7 +9,7 @@
     {
         private ITreeNode<T>[] children;
 
-        public TreeNode(int size, ITreeNode<T> left, ITreeNode<T> right)
+        public TreeNode(short size, ITreeNode<T> left, ITreeNode<T> right)
             : base(size)
         {
             this.children = new TreeLeafNode<T>[size + 1];
@@ -20,7 +20,7 @@
 
         public int GetChildPosition(ITreeNode<T> child)
         {
-            for (int k = 0; k < this.nkeys + 1; k++)
+            for (int k = 0; k < this.NoKeys + 1; k++)
                 if (this.children[k] == child)
                     return k;
 
@@ -31,7 +31,7 @@
         {
             base.InsertItem(key, value, newposition);
 
-            for (int k = this.nkeys; k > newposition + 1; k--)
+            for (int k = this.NoKeys; k > newposition + 1; k--)
                 this.children[k] = this.children[k - 1];
 
             this.children[newposition + 1] = newchild;

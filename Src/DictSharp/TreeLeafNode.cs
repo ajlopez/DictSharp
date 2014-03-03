@@ -9,15 +9,19 @@
     {
         private T[] values;
         private string[] keys;
+        private short size;
         private TreeNode<T> parent;
-        protected int nkeys;
+        private short nkeys;
 
-        public TreeLeafNode(int size)
+        public TreeLeafNode(short size)
         {
             this.values = new T[size];
             this.keys = new string[size];
             this.nkeys = 0;
+            this.size = size;
         }
+
+        public short NoKeys { get { return this.nkeys; } }
 
         public T GetItem(string key)
         {
@@ -52,7 +56,7 @@
             if (this.nkeys >= this.keys.Length)
             {
                 ITreeNode<T> newnode = this.Split();
-                newnode.SetItem(key, value);
+                this.GetTopNode().SetItem(key, value);
                 return newnode;
             }
 
@@ -77,20 +81,25 @@
             return null;
         }
 
+        private ITreeNode<T> GetTopNode()
+        {
+            if (this.parent == null)
+                return this;
+
+            return this.parent.GetTopNode();
+        }
+
         private ITreeNode<T> Split()
         {
-            var newleaf = new TreeLeafNode<T>(this.keys.Length);
-            int rightpos = (this.keys.Length / 2) + 1;
-            int rightlen = this.keys.Length - rightpos;
+            var newleaf = new TreeLeafNode<T>(this.size);
+            short rightpos = (short)((this.size / 2) + 1);
+            short rightlen = (short)(this.size - rightpos);
 
-            for (int k = 0; k < rightlen; k++)
-            {
-                newleaf.values[k] = this.values[k + rightpos];
-                newleaf.keys[k] = this.keys[k + rightpos];
-            }
+            Array.Copy(this.values, rightpos, newleaf.values, 0, rightlen);
+            Array.Copy(this.keys, rightpos, newleaf.keys, 0, rightlen);
 
             newleaf.nkeys = rightlen;
-            this.nkeys = rightpos - 1;
+            this.nkeys = (short)(rightpos - 1);
 
             if (this.parent != null)
             {
@@ -100,7 +109,7 @@
             }
             else
             {
-                var newnode = new TreeNode<T>(this.keys.Length, this, newleaf);
+                var newnode = new TreeNode<T>(this.size, this, newleaf);
                 newnode.values[0] = this.values[rightpos - 1];
                 newnode.keys[0] = this.keys[rightpos - 1];
                 newnode.nkeys = 1;
