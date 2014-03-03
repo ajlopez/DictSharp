@@ -101,17 +101,27 @@
             newleaf.nkeys = rightlen;
             this.nkeys = (short)(rightpos - 1);
 
+            string pivotkey = this.keys[this.nkeys];
+            T pivotvalue = this.values[this.nkeys];
+
+            for (int k = this.nkeys; k < this.size; k++)
+            {
+                this.keys[k] = null;
+                this.values[k] = default(T);
+            }
+
             if (this.parent != null)
             {
                 int childposition = this.parent.GetChildPosition(this);
-                var newnode = this.parent.InsertItem(this.keys[rightpos - 1], this.values[rightpos - 1], childposition, newleaf);
+                var newnode = this.parent.InsertItem(pivotkey, pivotvalue, childposition, newleaf);
+
                 return newnode;
             }
             else
             {
                 var newnode = new TreeNode<T>(this.size, this, newleaf);
-                newnode.values[0] = this.values[rightpos - 1];
-                newnode.keys[0] = this.keys[rightpos - 1];
+                newnode.values[0] = pivotvalue;
+                newnode.keys[0] = pivotkey;
                 newnode.nkeys = 1;
                 this.parent = newnode;
                 newleaf.parent = newnode;
