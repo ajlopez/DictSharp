@@ -29,6 +29,9 @@
 
         public ITreeNode<T> InsertItem(string key, T value, int newposition, ITreeNode<T> newchild)
         {
+            if (this.IsFull())
+                throw new NotImplementedException();
+
             base.InsertItem(key, value, newposition);
 
             for (int k = this.NoKeys; k > newposition + 1; k--)

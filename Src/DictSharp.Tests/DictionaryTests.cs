@@ -122,6 +122,18 @@
             for (var k = 1; k <= 20; k++)
                 Assert.AreEqual(k, dictionary.GetItem(string.Format("key{0:00}", k)));
         }
+
+        [TestMethod]
+        public void SetAndGetTwentyItemsWithSizeFive()
+        {
+            Dictionary<int> dictionary = new Dictionary<int>(5);
+
+            for (var k = 1; k <= 20; k++)
+                dictionary.SetItem(string.Format("key{0:00}", k), k);
+
+            for (var k = 1; k <= 20; k++)
+                Assert.AreEqual(k, dictionary.GetItem(string.Format("key{0:00}", k)));
+        }
     }
 }
 

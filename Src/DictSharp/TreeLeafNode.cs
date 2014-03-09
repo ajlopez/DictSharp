@@ -46,6 +46,11 @@
                 return this.InsertItem(key, value, -1 - position);
         }
 
+        protected bool IsFull()
+        {
+            return this.nkeys >= this.keys.Length;
+        }
+
         protected virtual T NotFound(string key, int position)
         {
             return default(T);
@@ -53,7 +58,7 @@
 
         protected virtual ITreeNode<T> InsertItem(string key, T value, int newposition)
         {
-            if (this.nkeys >= this.keys.Length)
+            if (this.IsFull())
             {
                 ITreeNode<T> newnode = this.Split();
                 this.GetTopNode().SetItem(key, value);
