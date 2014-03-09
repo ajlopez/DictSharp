@@ -117,6 +117,7 @@
 
             if (this.parent != null)
             {
+                newleaf.parent = this.parent;
                 int childposition = this.parent.GetChildPosition(this);
                 var newnode = this.parent.InsertItem(pivotkey, pivotvalue, childposition, newleaf);
 

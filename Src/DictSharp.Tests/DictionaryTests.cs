@@ -124,6 +124,42 @@
         }
 
         [TestMethod]
+        public void SetAndGetTwentyItemsWithSizeTen()
+        {
+            Dictionary<int> dictionary = new Dictionary<int>(10);
+
+            for (var k = 1; k <= 20; k++)
+                dictionary.SetItem(string.Format("key{0:00}", k), k);
+
+            for (var k = 1; k <= 20; k++)
+                Assert.AreEqual(k, dictionary.GetItem(string.Format("key{0:00}", k)));
+        }
+
+        [TestMethod]
+        public void SetAndGetTwentyItemsWithSizeEight()
+        {
+            Dictionary<int> dictionary = new Dictionary<int>(8);
+
+            for (var k = 1; k <= 20; k++)
+                dictionary.SetItem(string.Format("key{0:00}", k), k);
+
+            for (var k = 1; k <= 20; k++)
+                Assert.AreEqual(k, dictionary.GetItem(string.Format("key{0:00}", k)));
+        }
+
+        [TestMethod]
+        public void SetAndGetTwentyItemsWithSizeSix()
+        {
+            Dictionary<int> dictionary = new Dictionary<int>(6);
+
+            for (var k = 1; k <= 20; k++)
+                dictionary.SetItem(string.Format("key{0:00}", k), k);
+
+            for (var k = 1; k <= 20; k++)
+                Assert.AreEqual(k, dictionary.GetItem(string.Format("key{0:00}", k)));
+        }
+
+        [TestMethod]
         public void SetAndGetTwentyItemsWithSizeFive()
         {
             Dictionary<int> dictionary = new Dictionary<int>(5);
